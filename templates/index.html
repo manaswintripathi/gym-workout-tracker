@@ -1,0 +1,69 @@
+<!-- Built by Manaswin Tripathi (@manaswintripathi) -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gym Workout Tracker</title>
+<link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<header>
+  <h1>🏋️ Gym Workout Tracker</h1>
+  <p>Log lifts, beat your last best, and watch the numbers climb.</p>
+</header>
+<main>
+  <div class="cards" id="summary">
+    <div class="card"><h3>Total entries</h3><div class="big" id="sum-total">–</div></div>
+    <div class="card"><h3>Training days</h3><div class="big" id="sum-days">–</div></div>
+    <div class="card"><h3>🔥 Streak</h3><div class="big" id="sum-streak">–</div></div>
+    <div class="card"><h3>This week volume</h3><div class="big" id="sum-volume">–</div></div>
+  </div>
+
+  <section>
+    <h2>Log a workout</h2>
+    <form class="grid" id="log-form">
+      <div><label>Date</label><input type="date" id="f-date" required></div>
+      <div><label>Exercise</label><select id="f-exercise"></select></div>
+      <div><label>Sets</label><input type="number" id="f-sets" min="1" value="4" required></div>
+      <div><label>Reps / set</label><input type="number" id="f-reps" min="1" value="8" required></div>
+      <div><label>Weight (kg)</label><input type="number" id="f-weight" min="0" step="0.5" value="60" required></div>
+      <div><label>Notes</label><input type="text" id="f-notes" placeholder="optional"></div>
+      <button type="submit">Add workout</button>
+    </form>
+    <div class="hint" id="overload-hint">Pick an exercise to see your last best set and your next target.</div>
+  </section>
+
+  <section>
+    <h2>Progress chart</h2>
+    <div class="filters">
+      <select id="chart-exercise"></select>
+    </div>
+    <canvas id="chart" width="900" height="220"></canvas>
+    <p id="chart-note" style="color: var(--muted);"></p>
+  </section>
+
+  <section>
+    <h2>🏆 Personal records</h2>
+    <div class="pr-grid" id="prs"></div>
+  </section>
+
+  <section>
+    <h2>History</h2>
+    <div class="filters">
+      <select id="filter-exercise"><option value="">All exercises</option></select>
+      <input type="date" id="filter-from" title="From">
+      <input type="date" id="filter-to" title="To">
+      <button class="ghost" id="filter-btn">Filter</button>
+      <button class="danger" id="clear-btn">Clear sample data</button>
+    </div>
+    <table>
+      <thead><tr><th>Date</th><th>Exercise</th><th>Sets</th><th>Reps</th><th>Weight</th><th>Volume</th><th></th></tr></thead>
+      <tbody id="history"></tbody>
+    </table>
+  </section>
+</main>
+<footer>Built by Manaswin Tripathi (@manaswintripathi) — Gym Workout Tracker</footer>
+<script src="/static/app.js"></script>
+</body>
+</html>
